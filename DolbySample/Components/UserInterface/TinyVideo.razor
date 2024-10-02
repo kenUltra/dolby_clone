@@ -1,0 +1,49 @@
+﻿<div class="content-ctx" @onclick="AppendStack" @onmouseenter="MouseInside" @onmouseleave="MouseOutside">
+   <div class="home-ctx">
+        <div class="cover">
+          <div class="w-pic">
+            <video width="250" height="250" muted autoplay loop name="media" src="@coverImage" type="@mediaType">
+            </video>
+          </div>
+        </div>    
+   </div>  
+
+   <div class="detail">
+      <span>
+        <p>@titleBar</p>
+      </span>
+   </div>
+
+   <div class="hidden"></div>
+</div>
+
+@code {
+    [Parameter]
+    public string? coverImage {get; set;} = "";
+
+    [Parameter]
+    public string? titleBar {get; set;} = default!;
+
+    [Parameter]
+    public string? mediaType {get; set;} = "";
+
+    [Parameter]
+    public EventCallback<string> landingVideo {get; set;}
+
+    [Parameter]
+    public EventCallback<bool> mouseAction {get; set;}  
+
+    [Parameter]
+    public EventCallback<bool> mouseEndAction {get; set;}  
+
+    private async Task AppendStack() {
+        await landingVideo.InvokeAsync(this.titleBar);
+    }
+
+    private async Task MouseInside(){
+      await mouseAction.InvokeAsync(false);
+    }
+    private async Task MouseOutside() {
+      await mouseEndAction.InvokeAsync(true);
+    }
+}

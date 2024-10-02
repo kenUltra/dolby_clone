@@ -1,0 +1,48 @@
+.dolby-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.eff,
+.container {
+	display: block;
+}
+.hidden-value {
+	z-index: 3;
+}
+.hidden-value {
+	position: absolute;
+	inset: 0;
+}
+.container {
+	width: 100%;
+}
+.content {
+	width: 870px;
+	min-width: 290px;
+	height: 100%;
+	padding-bottom: 17px;
+	margin: var(--sl-pt) var(--auto-macth);
+}
+.content {
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	grid-auto-rows: 65px;
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+}
+@media only screen and (max-width: 950px) {
+	.content {
+        width: 660px;
+	}
+}
+@media only screen and (max-width: 730px) {
+    .content {
+        width: 432px;
+	}
+}
+@media only screen and (max-width: 465px) {
+	.content {
+        width: 305px;
+	}
+}

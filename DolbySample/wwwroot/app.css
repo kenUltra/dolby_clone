@@ -1,0 +1,209 @@
+*,
+::after,
+::before {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	height: 100%;
+	overflow: hidden scroll;
+}
+body {
+	height: 100%;
+}
+html,
+body {
+	color: var(--color-wh);
+	background-color: var(--bg-color);
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+:root {
+	--color-transparent: color(display-p3 1 1 1 / 0);
+	--color-bl: color(display-p3 0 0 0);
+	--color-wh: color(display-p3 1 1 1);
+	--color-gr: color(display-p3 0.6 0.6 0.6);
+	--color-gr-01: color(display-p3 0.6 0.6 0.6 / 0.65);
+	--blue-purple: color(display-p3 0.25 0.27 0.96);
+	--bg-color: color(display-p3 0.08 0.08 0.11);
+	--bg-color-head: color(display-p3 0.04 0.04 0.05);
+}
+:root {
+	--default-base: 0px;
+	--sl-pt: 0;
+	--auto-macth: auto;
+}
+.section {
+	display: block;
+	width: 100%;
+	height: 100vh;
+}
+.danger-zone,
+.tech-info {
+	height: 100%;
+}
+.hidden-bx {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+}
+.notice {
+	--rule-bt: 10px;
+	--notice-lc: var(--rule-bt);
+	display: block;
+	width: 810px;
+	line-height: 1.39;
+	text-align: center;
+	padding-bottom: calc(4px + var(--notice-lc));
+	margin: var(--sl-pt) var(--auto-macth);
+}
+.notice > p {
+	font-size: 10px;
+}
+.danger-zone,
+.sm,
+.cursor {
+	display: block;
+}
+.ctx-cr {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 95px;
+	height: 95px;
+	z-index: 101;
+	font-size: 0;
+	border-radius: 50%;
+	pointer-events: none;
+	transform: translate3d(var(--mouse-ps-y), var(--mouse-ps-x), 0px);
+	box-shadow: 0px 0px 0px 0px transparent;
+	transition: transform 260ms ease-out, box-shadow 205ms ease-out;
+	z-index: 999999;
+}
+.focus-ms .crs-content {
+	background: color(display-p3 0.03 0.4 0.97 / 0.38) !important;
+	transform: scale(0.85) !important;
+	box-shadow: inset 0px 0px 10px 8px color(display-p3 0.48 0.08 0.59), 0px 0px 11px 3px color(display-p3 0.24 0.01 0.44);
+}
+.focus-ms .txt-cr {
+	opacity: 1 !important;
+}
+.crs-content > .txt-cr {
+	width: 100%;
+	height: 100%;
+	color: var(--color-wh);
+	font-weight: 600;
+	letter-spacing: 1.15px;
+	font-size: 20px;
+	opacity: 0;
+}
+.crs-content > .txt-cr {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.ctx-cr {
+	--position-x: 0px;
+	--position-y: 0px;
+	--mouse-ps-x: var(--position-x);
+	--mouse-ps-y: var(--position-y);
+}
+.ctx-cr > .crs-content {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	transform: scale(0.27);
+	background: color(display-p3 0.32 0.11 0.72);
+	transition: transform 199ms ease-out;
+}
+.intro-gls {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: var(--bg-color);
+}
+.main-module-page {
+	cursor: none;
+}
+.remove-crs {
+	opacity: 0;
+	display: none;
+}
+.cover-home > .cover-wrap {
+	position: absolute;
+	inset: 0;
+}
+.cover-home > .cover-wrap > video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+.cover-home::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 10rem;
+	background: linear-gradient(0deg, color(display-p3 0.08 0.08 0.11), transparent);
+	z-index: 6;
+}
+.fs-nav {
+	background: var(--color-transparent);
+}
+.link-p {
+	text-decoration: none;
+	display: block;
+	height: 100%;
+	width: 100%;
+	cursor: none;
+}
+.err-section {
+	height: 90vh;
+}
+.danger-zone {
+	height: 100%;
+}
+.danger-zone {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0px 40px;
+}
+@media only screen and (max-width: 840px) {
+	.notice {
+		width: 570px;
+	}
+}
+
+@media only screen and (max-width: 610px) {
+	.notice {
+		width: 370px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.notice {
+		width: 286px;
+	}
+}
+@media only screen and (max-width: 340px) {
+	.notice {
+		width: 240px;
+	}
+}
+@supports ((backdrop-filter: initial) or (-webkit-backdrop-filter: initial)) {
+	.cover-home::after {
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+	}
+
+	.fs-nav {
+		backdrop-filter: blur(20px) saturate(230%);
+		-webkit-backdrop-filter: blur(20px) saturate(230%);
+	}
+}

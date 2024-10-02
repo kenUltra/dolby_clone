@@ -1,0 +1,155 @@
+.effect,
+.module-w,
+.fig-st {
+	display: block;
+}
+.content,
+.block-eff {
+	position: absolute;
+	inset: 0;
+}
+.content {
+	display: flex;
+	align-items: center;
+}
+.content {
+	gap: 0px 7px;
+	justify-content: center;
+	flex-direction: row;
+}
+.block-eff {
+	z-index: 15;
+}
+.content {
+	width: 90%;
+	min-width: 390px;
+	margin: var(--sl-pt) var(--auto-macth);
+}
+.one-sd,
+.other-sd {
+	width: 50%;
+}
+.fig-st > .module-w {
+	font-size: 16px;
+}
+.one-sd > .module-w,
+.fig-st > .module-w {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.notice-prt {
+	display: block;
+	width: 215px;
+}
+.notice-prt > h6 {
+	font-size: 18px;
+}
+.content {
+	z-index: 10;
+}
+.module-w > video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+.title-prt {
+	width: 295px;
+	margin: 15px var(--sl-pt);
+	letter-spacing: 1.5px;
+}
+.title-prt h1 {
+	font-size: 38px;
+}
+.str-v5186 .dt-prt,
+.fst-pt {
+	display: block;
+}
+.prg-st {
+	width: 390px;
+	margin-bottom: 15px;
+	line-height: 1.5;
+}
+.prg-st > p {
+	font-size: 15px;
+}
+.fig-st > .module-w {
+	height: 360px;
+}
+@media only screen and (max-width: 945px) {
+	.notice-prt > h6 {
+		font-size: 16px;
+	}
+	.title-prt {
+		margin: 10px var(--sl-pt);
+	}
+	.title-prt > h1 {
+		font-size: 30px;
+	}
+	.prg-st {
+		width: 330px;
+		margin-bottom: 10px;
+	}
+	.prg-st > p {
+		font-size: 14px;
+	}
+}
+@media only screen and (max-width: 785px) {
+	.notice-prt {
+		width: 170px;
+	}
+	.notice-prt > h6 {
+		font-size: 13px;
+	}
+	.title-prt {
+		width: 215px;
+	}
+	.title-prt > h1 {
+		font-size: 25px;
+	}
+	.prg-st {
+		width: 250px;
+	}
+	.prg-st > p {
+		font-size: 13px;
+	}
+}
+@media only screen and (max-width: 620px) {
+	.content {
+		width: 85%;
+		min-width: 247px;
+		flex-direction: column;
+	}
+	.one-sd,
+	.other-sd {
+		width: 100%;
+		height: 50%;
+	}
+	.other-sd {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.notice-prt {
+		margin-top: 10px;
+	}
+	.title-prt {
+		width: 275px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+	}
+	.title-prt > h1 {
+		font-size: 18px;
+	}
+	.notice-prt > h6 {
+		font-size: 11px;
+	}
+	.prg-st {
+		width: 268px;
+        margin-bottom: 5px;
+	}
+	.fig-st > .module-w {
+		height: 170px;
+	}
+}

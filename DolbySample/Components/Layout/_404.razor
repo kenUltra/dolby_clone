@@ -1,0 +1,36 @@
+﻿@page "/404"
+
+<PageTitle>Error Happen | Error 404</PageTitle>
+
+<section class="section-error err-wrapper">
+    <div class="main-ctx">
+        <div class="entry">
+            <div class="container-err">
+                <div class="dt-headline">
+                    <h3>@headline</h3>
+                </div>
+                <div class="detail">
+                    <div class="definition">
+                        <p>@content</p>
+                    </div>
+                    <div class="link">
+                        <a href="" class="link-tap">Save Page</a>
+                    </div>
+                </div>
+                    <div class="eff">
+                        <div class="empty"></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="eff">
+        <div class="empty"></div>
+    </div>
+
+</section>
+
+@code {
+    private string content {get; set;} = "Hey the path that you're trying doen't exist yet";
+    private string headline {get; set;} = "Error: Page not found.";
+
+}

@@ -1,0 +1,86 @@
+﻿<div class="stack-wrapper">
+    <div class="container">
+        <div class="content @setStyle()">
+            <div class="one-sd">
+                <div class="module-w">
+                    @if(notice is null || notice == "") {
+                    } else {
+                      <div class="notice-prt">
+                         <h6>@notice</h6>
+                      </div>
+                    }
+
+                    <div class="title-prt">
+                        <h1>@header</h1>
+                    </div>
+                    @if(subhead is null || subhead == ""){
+                    } else {
+                     <div class="subt-prt">
+                        <h2>@subhead</h2>
+                     </div>
+                    }
+                    @if(pOne is null && pSecond is null) {
+                    } else {
+                       <div class="dt-prt">
+                           <div class="prg-st fst-pt">
+                               <p>@pOne</p>
+                           </div>
+                           <div class="prg-st sd-pt">
+                               <p>@pSecond</p>
+                           </div>
+                       </div>
+                    }
+                </div>
+            </div>
+            <div class="other-sd">
+                <div class="fig-st">
+                    <div class="module-w">
+                        @if(isImage){
+                            <picture>
+                                <img src="@cover" alt="Dolby atmos image" width="auto" height="auto" loading="eager">
+                            </picture>
+                        } else {
+                            <video src="@cover" width="auto" height="auto" muted autoplay loop></video>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="effect">
+        <div class="block-eff"></div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string header {get; set;} = "";
+
+    [Parameter]
+    public int id {get; set;} = 0;
+
+    [Parameter]
+    public bool isImage { get; set; } = false;
+
+    [Parameter]
+    public string? subhead { get; set;} = default!;
+
+    [Parameter]
+    public string? notice {get; set;} = "";
+
+    [Parameter]
+    public string? pOne {get; set;} = "";
+
+    [Parameter]
+    public string? pSecond {get; set;} = "";
+
+    [Parameter]
+    public string? cover {get; set;} = "";
+
+
+    public string setStyle() {
+        string name = "str-v5" + id + "86";
+        return name;
+    }
+
+}

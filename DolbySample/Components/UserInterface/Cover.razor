@@ -1,0 +1,68 @@
+﻿@using DolbySample.Model;
+
+<div class="intro-tech @focusIntro">
+    <div class="container">
+        <div class="hero-content">
+            <div class="title">
+                <div class="dolby-title">
+                    <h1>@title</h1>
+                </div>
+            </div>
+            <div class="list-contentainer">
+                <div class="wrap-hero">
+                    @ChildContent
+                </div>
+            </div>
+            <div class="list-cover">
+                <div class="video-hero-cvr">
+                    <div class="video-content">
+                        <video width="750" height="450" src="@WholeCover" autoplay loop muted name="media"></video>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-d">
+                <div class="icon-ctx">
+                    <div class="container-icn" >
+                         <svg viewBox="0 0 23 16" class="double-d" style="display: block;" @onmouseenter="sampleAction" @onmouseleave="Leave" >
+                                <g data-svg-origin="11.499999797171133 8" transform="matrix(0.4199,0,0,0.4199,6.67115,4.6408)" style="transform-origin: 0px 0px; stroke-width: 6px; stroke: var(--color-gr-01);--size-st: scale(@defaultSize); fill: @dolbyIcon;" >
+                                    <path d="M.1 0h2.3c4.3 0 7.9 3.5 7.9 7.9s-3.5 7.9-7.9 7.9H.1V.1zm22.4 0h-2.3c-4.3 0-7.9 3.5-7.9 7.9s3.5 7.9 7.9 7.9h2.3V.1z"></path>
+                                </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-wrapper">
+        <div class="hidden-content"></div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public required string? title {get; set;} 
+
+    [Parameter]
+    public RenderFragment? ChildContent {get; set;}
+
+    [Parameter]
+    public string? WholeCover {get; set;} = "";
+
+    [Parameter]
+    public string? mediaName {get;set;} = "";
+
+    [Parameter]
+    public string? dolbyIcon {get; set;} = "";
+
+    private string focusIntro {get; set;} = "";
+    private float defaultSize {get; set; } = 0.85f;
+
+    public void sampleAction() {
+        this.defaultSize = 1.0f;
+        this.focusIntro = "tech-sp";
+    }
+    public void Leave() {
+        this.defaultSize = 0.85f;
+        this.focusIntro = "";
+    }
+}

@@ -1,0 +1,46 @@
+﻿<div class="container">
+    <div class="hero-ctx">
+        <div class="main-content">
+            <div class="detail-st">
+                <div class="container-dts">
+                    <div class="headline">
+                       <h1>@title</h1>
+                    </div>
+                    <div class="subheadline">
+                        <h3>@subtitle</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="cover-st">
+                <div class="bg-content">
+                    <div class="wrapper">
+                        @if(isVideo){
+                            <video autoplay loop muted width="750" height="750" src="@cover"></video>
+                        }else{
+                            <picture title="dolby atmos">
+                                <img src="@cover" alt="Dolby image" loading="eager">
+                            </picture>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cover">
+        <div class="cover-content"></div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string title {get; set; }= "";
+
+    [Parameter]
+    public string? subtitle {get; set;} = "";
+
+    [Parameter]
+    public string cover {get; set;} = "";
+
+    [Parameter]
+    public bool isVideo {get; set;} = false;
+}

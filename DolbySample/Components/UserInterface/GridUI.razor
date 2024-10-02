@@ -1,0 +1,16 @@
+﻿<div class="dolby-wrapper">
+    <div class="container">
+        <div class="content">
+            @ChildContent
+        </div>
+    </div>
+    <div class="eff">
+        <div class="hidden-value"></div>
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent {get; set;}
+}

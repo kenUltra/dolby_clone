@@ -1,0 +1,67 @@
+﻿@rendermode InteractiveServer
+
+<div class="dolby-itms @size @hoverClass">
+   <div class="containter">
+       <div class="content">
+           <h3>
+               <span class="txt">@title</span>
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12">
+                        <path d="M6 0v2H2v8h10V8h2v3a1 1 0 01-1 1H1a1 1 0 01-1-1V1a1 1 0 011-1h5zm8 0v6h-2V3.413L7.878 7.536 6.464 6.12 10.585 2H8V0h6z" fill="#FFF" fill-rule="evenodd"/>
+                    </svg>
+                </span>
+            </h3>
+       </div>
+   </div>
+   <div class="eff">
+       <div class="link">
+           <NavLink  href="dolby-atmos" class="link-p" @onmouseleave="OutsideCursor" @onmouseenter="InsideCursor" @onmouseout="OutMouse" @onmouseover="InMouse">
+               <span class="dt-links"><p>Hello world</p> </span>
+            </NavLink>
+       </div>
+   </div>
+   <div class="wrap">
+       <div class="image-dt">
+           <picture>
+               <img src="@imageCover" alt="Dolby">
+           </picture>
+       </div>
+   </div>
+</div>
+
+@code {
+    [Parameter]
+    public string title {get; set; } = "";
+
+    [Parameter]
+    public string imageCover {get; set;} = "";
+
+    [Parameter]
+    public string? link {get; set;} = "";
+
+    [Parameter]
+    public string? size {get; set;} = "";
+
+    [Parameter]
+    public EventCallback<string> changeMouse {get; set;}
+
+    [Parameter]
+    public EventCallback<string> normalMouse {get; set;}    
+
+
+    private string hoverClass {get; set;} = "";
+
+
+    private void OutsideCursor() {
+        hoverClass = "";
+    }
+    private void InsideCursor() {
+        hoverClass = "obj-fcs";
+    }
+    private async Task InMouse() {
+        await changeMouse.InvokeAsync("mouse-in");
+    }
+    private async Task OutMouse(){
+        await normalMouse.InvokeAsync("mouse-out");
+    }
+}

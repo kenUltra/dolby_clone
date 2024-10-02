@@ -1,0 +1,27 @@
+.section-atmos,
+.def {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+}
+.parent-ats,
+.atmos,
+.hero-intro,
+.effect-ctx {
+	display: block;
+}
+.hidden-value {
+	position: absolute;
+	inset: 0;
+	z-index: 10;
+}
+@media only screen and (max-width: 530px) {
+	.section-atmos {
+		height: 45vh;
+	}
+}
+@media only screen and (max-width: 620px) {
+    .atmos{
+        height: 80vh;
+    }
+}

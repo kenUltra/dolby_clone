@@ -1,0 +1,32 @@
+{
+    "short_name": "Dolby Tech",
+	"name": "Dolby clone",
+	"icons": [
+		{
+			"src": "/Dolby_large.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/Dolby_md.png",
+			"sizes": "128x128",
+			"type": "image/png"
+		},
+		{
+			"src": "/Dolby_sm.png",
+			"sizes": "64x64",
+			"type": "image/png"
+		},
+		{
+			"src": "/Dolby_extra_sm.png",
+			"sizes": "32x32 16x16",
+			"type": "image/png"
+		}
+	],
+	"start_url": "./",
+	"display": "standalone",
+	"description": "Dolby sample app",
+	"background_color": "color(display-p3 0.74 0.74 0.77)",
+	"theme_color": "color(display-p3 0 0.06 0.14)",
+	"orientation": "Portrait"
+}

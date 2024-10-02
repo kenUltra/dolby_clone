@@ -1,0 +1,121 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using System
+@using DolbySample.Client
+@using DolbySample.Model
+@using DolbySample.Components.Layout
+@using DolbySample.Components.UserInterface
+
+<PageTitle>Dolby Technogies, Sound, Home page</PageTitle>
+
+<section class="main-module-page"  @onwheel="navDolby"  @onmousemove="CursorChange" @onclick="Action">
+
+<NavMenu navStyle="@navStyle" />
+
+<section class="section tech-labs">
+   <Cover title="@getHeadLine()" WholeCover="@getCover()" dolbyIcon="@currentUrl">
+      @if(dolbyServices is null) {
+         <div class="null-dt">
+            <h2>Loading...</h2>
+         </div>
+      } else {
+         @foreach(var videoData in dolbyServices) {
+             <TinyVideo coverImage="@videoData.VideoLink"  titleBar="@videoData.VideoTitle" mediaType="@videoData.typeVideo" landingVideo="(selected)=>{ healine = selected; }" mouseAction="(choose)=>{ InsideRange(choose); }" mouseEndAction="(res)=> {OutsideRange(res); }"/>
+          }
+      }
+   </Cover>
+   <div class="intro">
+      <div class="intro-gls"></div>
+   </div>
+</section>
+
+<div class="hidden-bx">
+   <div class="sm"></div>
+</div>
+<section class="section tech-info">
+   <GridUI>
+      @if(listDolby is null) {
+         <div class="loading-eff">
+            <h1>Load...</h1>
+         </div>
+      } else {
+         @foreach(var gridItm in listDolby) {
+             <Items title="@gridItm.title" imageCover="@gridItm.urlImage" size="@gridItm.nameStack" changeMouse="(res) => { gridMouseIn(res); }" normalMouse="(res)=> gridMousOut(res)" ></Items>
+         }
+      }
+   </GridUI>
+</section>
+
+<div class="cursor @mouseVideoLocation">
+   <div class="ctx-cr" style="--position-y: @xMouse; --position-x: @yMouse;" >
+      <div class="crs-content">
+         <span class="txt-cr">Dive in</span>
+      </div>
+   </div>
+</div>
+</section>
+
+@code {
+   private Dolby intro = new();
+   private Grid gridEntry = new();
+
+   private string healine {get; set;} = "Music comes alive in Dolby";
+   private string coverStack {get; set;} = "";
+   private string navStyle {get; set;} = "";
+
+
+   private float xCursor {get; set;} = 0.0F;
+   private float yCursor {get; set;} = 0.0F;
+
+   public string mouseVideoLocation {get; set;} = "";
+   public string xMouse {get; set;} = "205.78px";
+   public string yMouse {get; set;} = "15px";
+   private string currentUrl {get; set;} = "var(--color-transparent)";
+
+   public LoopVideo[]? dolbyServices;
+   public GridModel[]? listDolby;
+
+   private void CursorChange(MouseEventArgs mouseEvent)  {
+      this.xCursor = (float)mouseEvent.PageX - 40F;
+      this.yCursor = (float)mouseEvent.PageY - 40F; 
+
+      this.xMouse = this.xCursor + "px";
+      this.yMouse = this.yCursor + "px";
+   }
+   private void navDolby(WheelEventArgs mouseEvent) {
+        System.Console.WriteLine(mouseEvent.DeltaY + " screen " + mouseEvent.ClientY + " " + mouseEvent);
+      @*
+         navStyle= "atms-nav";
+        
+        System.Console.WriteLine(mouseEvent.DeltaY + " screen" + mouseEvent.ScreenY);
+        System.Console.WriteLine(mouseEvent.ClientY + " from client to offset:  " + mouseEvent.OffsetY + " page " + mouseEvent.PageY + " screen " + mouseEvent.ScreenY ); *@
+   }
+
+   protected override void OnInitialized() {
+      dolbyServices = intro.getVideos();
+      listDolby = gridEntry.getGridList();
+   }
+   private string getHeadLine() {
+      string prompt = intro.SelectedValue(healine) ?? "Music comes alive in Dolby";
+      return prompt;
+   }
+   private string getCover() {
+      string response = intro.GetCover(healine) ?? "/Assets/download/anyma_ambient_music.mp4";
+      currentUrl = "url(" + response +")";
+      return response;
+   }
+   private void Action(){
+   }
+   private void InsideRange(bool sect){
+      mouseVideoLocation = "focus-ms";
+   }
+   private void OutsideRange(bool status){
+      mouseVideoLocation = "";
+   }
+   private void gridMouseIn(string valueMouse){
+      mouseVideoLocation = "focus-ms";
+   }
+   private void gridMousOut(string valueMouse){
+      mouseVideoLocation = "";
+   }
+}

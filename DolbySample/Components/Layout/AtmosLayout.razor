@@ -1,0 +1,47 @@
+﻿@using DolbySample.Components.UserInterface
+@using DolbySample.Client
+@using DolbySample.Model
+
+
+<section class="section-atmos entry">
+    <div class="hero-intro">
+        @if(firstStack is null){
+            <div class="empty-str">
+                <h2>Loading....</h2>
+            </div>
+        } else {
+            <Intro title="@firstStack.title"  subtitle="@firstStack.subtitle" cover="@firstStack.urlBackground" isVideo="@isImage" />
+        }
+    </div>
+    <div class="effect-ctx">
+        <div class="hidden-value"> </div>
+    </div>
+</section>
+
+<section class="def atmos">
+    <div class="parent-ats">
+        @if(atmosContext is null){
+            <div class="null-ctx">
+                <p>Loading...</p>
+            </div>
+        } else {
+            <Hstack header="@atmosContext.title" id="@atmosContext.id" isImage="@atmosContext.hasImage" pOne="@atmosContext.pOne" pSecond="@atmosContext.pSecond" notice="@atmosContext.notice" cover="@atmosContext.cover" />
+        }
+    </div>
+    <div class="effect-ctx">
+        <div class="hidden-value"> </div>
+    </div>
+</section>
+
+@code {
+    public bool isImage = !false;
+    private Atmos dolbyAtmos {get; set;} = new();
+
+    public IntroModel? firstStack;
+    public Stack? atmosContext;
+
+    protected override void OnInitialized(){
+       firstStack = dolbyAtmos.getMain();
+       atmosContext = dolbyAtmos.getDetailAtmos();
+    }
+}
